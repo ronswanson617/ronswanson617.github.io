@@ -196,8 +196,8 @@ function formatAMPM(date) {
   var startt = shours + ':' + smin + ' ' + ampm ;
   return [strTime,startt];
 }
-var datetimeNow = new Date();
-$("#active").html("Ticket Activated at " + formatAMPM(datetimeNow)[1]);
+//var datetimeNow = new Date();
+//$("#active").html("Ticket Activated at " + formatAMPM(datetimeNow)[1]);
 
 setInterval(function() {
         //var datetimeNow = new Date();
@@ -214,9 +214,6 @@ var witth = $("#MOVE").outerWidth();
 $("#wrapper").css("padding-right", witth+"px");
     //do what you need here
 }, 1000);
-
-
-
     //do what you need here
 
 
