@@ -39,9 +39,9 @@ body{
 #MOVE {
     display: inline-block;
     position:relative;
-    -webkit-animation: backandforth 3s ease 0s;
+    -webkit-animation: backandforth 3s ease-in-out 0s;
     -webkit-animation-iteration-count:infinite;
-    animation: backandforth 3s ease 0s;
+    animation: backandforth 3s ease-in-out 0s;
     animation-iteration-count:infinite;
 }
 
@@ -74,7 +74,31 @@ body{
     line-height:26pt;
     color:white;
     text-shadow: -3px 0 6px black, 0 3px 6px black, 3px 0 6px black, 0 -3px 6px black;
+    opacity: 1;
 }
+
+#colors{
+    background: linear-gradient(to right,  #6634B0 0%,#6634B0 33.33%,#D28037 33.33%,#D28037 66.66%,#403EF3 66.66%,#403EF3 100%);
+    height:120px;
+    width=100%;
+    //background-color:#FFFFFF;
+    box-shadow: 10px 3px 0px #D3D3D3;
+    -webkit-animation: opa 1.5s linear 0s;
+    -webkit-animation-iteration-count:infinite;
+    animation: opa 1.5s linear 0s;
+    animation-iteration-count:infinite;
+}
+
+@keyframes opa {0%{opacity:1;} 50%{opacity:0.6;} 100%{opacity:1;}}
+
+@-webkit-keyframes opa {0%{opacity:1;} 50%{opacity:0.6;} 100%{opacity:1;}}
+
+#wrapper{
+    width:100%;
+    position: absolute;
+    top:66px;
+}
+
 </style>
 
 <body>
@@ -89,7 +113,8 @@ body{
 </div>
 
 
-<div id="wrapper" style="height:120px;width=100%;background-color:#FFFFFF;box-shadow: 10px 3px 0px #D3D3D3">
+<div id="colors"></div>
+<div id="wrapper">
 <span id="MOVE"><strong><p class="text-center" style="" id="TIME"></p></strong></span>
 </div>
 
@@ -99,7 +124,7 @@ body{
 <div class="container">
     <div class="row">
         <div class="col-xs-12 text-center">
-            <div class="btn" style="width:95%;height:40px;background-color:red;color:white;line-height:25px;box-shadow: 1px 2px 0px #D3D3D3;">Ticket Activated at </div>
+            <div id="active" class="btn" style="width:95%;height:40px;background-color:red;color:white;line-height:25px;box-shadow: 1px 2px 0px #D3D3D3;"></div>
         </div>
     </div>
     <br>
@@ -149,8 +174,18 @@ function formatAMPM(date) {
   var day= date.getDate();
   var mon = date.getMonth();
   var yr = date.getYear()
+  var MS_PER_MINUTE = 60000;
   yr=yr-100
   var ampm = hours >= 12 ? 'PM' : 'AM';
+
+  var start = new Date(date - 14 * MS_PER_MINUTE);
+  var shours=start.getHours();
+  var smin = start.getMinutes();
+  
+  shours = shours % 12;
+  shours = shours ? shours : 12; // the hour '0' should be '12'
+  smin = smin < 10 ? '0'+smin : smin;
+
   hours = hours % 12;
   hours = hours ? hours : 12; // the hour '0' should be '12'
   minutes = minutes < 10 ? '0'+minutes : minutes;
@@ -158,15 +193,17 @@ function formatAMPM(date) {
   day = day < 10 ? '0'+day : day;
   mon = mon < 10 ? '0'+mon : mon;
   var strTime = hours + ':' + minutes + ':' +  secs + ' ' + ampm + '<br>' + mon + '/' + day + '/' +yr;
-  return strTime;
+  var startt = shours + ':' + smin + ' ' + ampm ;
+  return [strTime,startt];
 }
 var datetimeNow = new Date();
-$("#TIME").html(formatAMPM(datetimeNow));
+$("#active").html("Ticket Activated at " + formatAMPM(datetimeNow)[1]);
 
 setInterval(function() {
-        var datetimeNow = new Date();
-        $("#TIME").html(formatAMPM(datetimeNow));
+        //var datetimeNow = new Date();
+        $("#TIME").html(formatAMPM(datetimeNow)[0]);
     }, 1000);
+
 </script>
 
 <script>
