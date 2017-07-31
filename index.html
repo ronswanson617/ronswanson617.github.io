@@ -70,7 +70,7 @@ body{
 #TIME{
     font-size: 28pt;
     padding-top:25px;
-    font-family: 'Droid Sans', sans-serif;
+    //font-family: 'Droid Sans', sans-serif;
     line-height:36pt;
     color:white;
     text-shadow: -3px 0 6px black, 0 3px 6px black, 3px 0 6px black, 0 -3px 6px black;
@@ -168,14 +168,20 @@ setInterval(function() {
         $("#TIME").html(formatAMPM(datetimeNow));
     }, 1000);
 </script>
-<!--
+
 <script>
+
+
+setTimeout(function(){
 var thisis = document.getElementById("wrapper");
 var tyty = document.getElementById("MOVE");
 var witth = tyty.offsetWidth;
 
     thisis.style.paddingRight = witth +"px";
+    //do what you need here
+}, 50);
+
 </script>
--->
+
 </body>
 </html>
