@@ -171,15 +171,11 @@ setInterval(function() {
 
 <script>
 
+var witth = $("#MOVE").outerWidth();
 
-setTimeout(function(){
-var thisis = document.getElementById("wrapper");
-var tyty = document.getElementById("MOVE");
-var witth = tyty.offsetWidth;
-
-    thisis.style.paddingRight = witth +"px";
+$("#wrapper").css("padding-right", witth+"px");
     //do what you need here
-}, 50);
+
 
 </script>
 
