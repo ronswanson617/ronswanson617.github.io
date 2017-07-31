@@ -147,7 +147,7 @@ body{
             <div class="btn" style="width:95%;height:58px;background-color:#FFFFFF;color:black;line-height:25px;box-shadow: 1px 2px 0px #D3D3D3;">
                 <div class=" btn" style="position:absolute;left:7.5%;top:16%;color:white;width:40%;height:40px;background-color:#9B1D81;line-height:27.5px">Actions</div>
              
-                <div class="btn" style="position:absolute;left:52.5%;top:16%;color:white;width:40%;height:40px;background-color:#9B1D81;line-height:27.5px">Ticket Info</div>
+                <div id="refresh" class="btn" style="position:absolute;left:52.5%;top:16%;color:white;width:40%;height:40px;background-color:#9B1D81;line-height:27.5px">Ticket Info</div>
             </div>
         </div>
     </div>
@@ -220,6 +220,13 @@ $("#wrapper").css("padding-right", witth+"px");
     //do what you need here
 
 
+</script>
+
+
+<script>
+$('#refresh').click(function() {
+    location.reload();
+});
 </script>
 
 </body>
