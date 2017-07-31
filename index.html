@@ -61,6 +61,7 @@ body{
   border-bottom-left-radius: 60px;
   border-bottom-right-radius: 60px;
   left:45%;
+  box-shadow: 0px 2px 0px #D3D3D3;
 }
 .vcenter {
     line-height: 50px;
@@ -69,7 +70,7 @@ body{
 
 #TIME{
     font-size: 24pt;
-    padding-top:24px;
+    padding-top:55px;
     font-family: 'Droid Sans', sans-serif;
     line-height:26pt;
     color:white;
@@ -78,11 +79,15 @@ body{
 }
 
 #colors{
+    position: relative;
     background: linear-gradient(to right,  #6634B0 0%,#6634B0 33.33%,#D28037 33.33%,#D28037 66.66%,#403EF3 66.66%,#403EF3 100%);
-    height:120px;
-    width=100%;
+    height:80%;
+    width:95%;
+    left: 2.5%;
+    top:10%;
     //background-color:#FFFFFF;
-    box-shadow: 10px 3px 0px #D3D3D3;
+    box-shadow: 1px 2px 0px #D3D3D3;
+    //border-bottom:solid #D3D3D3;
     -webkit-animation: opa 1.5s linear 0s;
     -webkit-animation-iteration-count:infinite;
     animation: opa 1.5s linear 0s;
@@ -98,6 +103,19 @@ body{
     position: absolute;
     top:66px;
 }
+#top{
+    height:100%;
+    font-size:20;
+    color:white;
+    line-height:80px;
+    padding-left:42%;
+
+}
+
+#bigwrapper{
+    background-color: #FFFFFF;
+    height:160px;
+}
 
 </style>
 
@@ -107,15 +125,16 @@ body{
     <div id="back" style="float:left">
         <img style="width:35px;padding-top:60%" src="gfx/back.png">
     </div>
-    <div id="top" style="height:100%;font-size:20;color:white;line-height:80px;padding-left:42%">
+    <div id="top">
         One Way
     </div>
 </div>
 
-
-<div id="colors"></div>
+<div id="bigwrapper">
+<div id="colors" class="btn"></div>
 <div id="wrapper">
 <span id="MOVE"><strong><p class="text-center" style="" id="TIME"></p></strong></span>
+</div>
 </div>
 
 <div class="bottom"><img class="img-responsive" src="gfx/down.png" width = 22px style="  position:absolute;left:18px;top:5px"></div>
@@ -124,19 +143,19 @@ body{
 <div class="container">
     <div class="row">
         <div class="col-xs-12 text-center">
-            <div id="active" class="btn" style="width:95%;height:40px;background-color:red;color:white;line-height:25px;box-shadow: 1px 2px 0px #D3D3D3;"></div>
+            <div id="active" class="btn" style="width:95%;height:40px;background-color:red;color:white;line-height:25px;box-shadow: 0px 2px 0px #D3D3D3;"></div>
         </div>
     </div>
     <br>
     <div class="row">
         <div class="col-xs-12 text-center">
-            <div class="btn" style="width:95%;height:40px;background-color:#FFFFFF;color:black;line-height:25px;box-shadow: 1px 2px 0px #D3D3D3;">One Way</div>
+            <div class="btn" style="width:95%;height:40px;background-color:#FFFFFF;color:black;line-height:25px;box-shadow: 0px 2px 0px #D3D3D3;">One Way</div>
         </div>
     </div>
     <br>
     <div class="row">
         <div class="col-xs-12 text-center">
-            <div class="btn" style="width:95%;background-color:#FFFFFF;color:black;line-height:25px;box-shadow: 1px 2px 0px #D3D3D3;">
+            <div class="btn" style="width:95%;background-color:#FFFFFF;color:black;line-height:25px;box-shadow: 0px 2px 0px #D3D3D3;">
                 <img width=95% src="gfx/1A.PNG">
             </div>
         </div>
@@ -144,7 +163,7 @@ body{
     <br>
     <div class="row">
         <div class="col-xs-12 text-center">
-            <div class="btn" style="width:95%;height:58px;background-color:#FFFFFF;color:black;line-height:25px;box-shadow: 1px 2px 0px #D3D3D3;">
+            <div class="btn" style="width:95%;height:58px;background-color:#FFFFFF;color:black;line-height:25px;box-shadow: 0px 2px 0px #D3D3D3;">
                 <div class=" btn" style="position:absolute;left:7.5%;top:16%;color:white;width:40%;height:40px;background-color:#9B1D81;line-height:27.5px">Actions</div>
              
                 <div id="refresh" class="btn" style="position:absolute;left:52.5%;top:16%;color:white;width:40%;height:40px;background-color:#9B1D81;line-height:27.5px">Ticket Info</div>
