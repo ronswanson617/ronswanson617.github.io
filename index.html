@@ -130,6 +130,7 @@ function formatAMPM(date) {
   minutes = minutes < 10 ? '0'+minutes : minutes;
   secs = secs < 10 ? '0'+secs : secs;
   day = day < 10 ? '0'+day : day;
+  mon = mon < 10 ? '0'+mon : mon;
   var strTime = hours + ':' + minutes + ':' +  secs + ' ' + ampm + '<br>' + mon + '/' + day + '/' +yr;
   return strTime;
 }
