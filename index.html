@@ -213,7 +213,7 @@ function formatAMPM(date) {
   var minutes = date.getMinutes();
   var secs = date.getSeconds();
   var day= date.getDate();
-  var mon = date.getMonth();
+  var mon = date.getMonth()+1;
   var yr = date.getYear()
   var MS_PER_MINUTE = 60000;
   yr=yr-100
