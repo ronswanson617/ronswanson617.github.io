@@ -291,6 +291,14 @@ $('#refresh').click(function() {
 });
 </script>
 
+<script>
+$('#active').click(function() {
+  var st = prompt("Ticket activated at ", "");
+  if (st != null) {
+    $('#active').html("Ticket activated at "+st);
+    }
+})
+</script>
 
 
 
