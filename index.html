@@ -76,7 +76,7 @@ body{
     line-height:100%;
     color:white;
     text-shadow: -2px 0 3px black, 0 2px 3px black, 2px 0 3px black, 0 -2px 3px black;
-    opacity: 1;
+    opacity: 0;
 }
 
 #colors{
@@ -237,33 +237,23 @@ function formatAMPM(date) {
   var startt = shours + ':' + smin + ' ' + ampm ;
   return [strTime,startt];
 }
+var datetimeNow = new Date();
+$("#active").html("Ticket activated at " + formatAMPM(datetimeNow)[1]);
+$("#TIME").html(formatAMPM(datetimeNow)[0]);
 
-function settimme(){
-  var datetimeNow = new Date();
-  $("#active").html("Ticket activated at " + formatAMPM(datetimeNow)[1]);
-  $("#TIME").html(formatAMPM(datetimeNow)[0]);
-}
-
-function padthis(){
-  var witth = $("#MOVE").outerWidth();
-  $("#wrapper").css("padding-right", witth+"px");
-}
-
-$.when(settimme()).done(padthis());
-
-
-/*
-setTimeout(function(){
-  var witth = $("#MOVE").outerWidth();
-  $("#wrapper").css("padding-right", witth+"px");
-}, 200);
 
 
 setInterval(function() {
         var datetimeNow = new Date();
         $("#TIME").html(formatAMPM(datetimeNow)[0]);
     }, 1000);
-*/
+
+
+setTimeout(function(){
+  var witth = $("#MOVE").outerWidth();
+  $("#wrapper").css("padding-right", witth+"px");
+  $("#TIME").css("opacity",1);
+}, 300);
 </script>
 
 
