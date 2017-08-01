@@ -40,9 +40,9 @@ body{
 #MOVE {
     display: inline-block;
     position:relative;
-    -webkit-animation: backandforth 3s ease-in-out 0s;
+    -webkit-animation: backandforth 3.5s ease-in-out 0s;
     -webkit-animation-iteration-count:infinite;
-    animation: backandforth 3s ease-in-out 0s;
+    animation: backandforth 3.s ease-in-out 0s;
     animation-iteration-count:infinite;
 }
 
@@ -140,7 +140,7 @@ body{
         One Way
     </div>
 </div>
-
+<a style='display:block;width:100%'>
 <div id="bigwrapper">
 <div id="colors" class="btn"></div>
 <div id="wrapper">
@@ -148,6 +148,7 @@ body{
 </div>
 <p class="text-center" style="font-size:8pt; position:relative; top:85%">Tap to reveal barcode<p>
 </div>
+</a>
 
 <div class="bottom"><img class="img-responsive" src="gfx/down.png" width = 22px style="  position:absolute;left:18px;top:5px"></div>
 <br>
@@ -172,8 +173,8 @@ body{
     <br>
     <div class="row">
         <div class="col-xs-12 text-center">
-            <div class="btn" style="font-weight: bold;width:100%%;background-color:#FFFFFF;color:black;line-height:25px;box-shadow: 0px 2px 0px #D3D3D3;">
-                <img width=100% src="gfx/1A.PNG">
+            <div id="zone" class="btn" style="font-weight: bold;width:100%%;background-color:#FFFFFF;color:black;line-height:25px;box-shadow: 0px 2px 0px #D3D3D3;">
+                <img id="zoneimg" width=100% src="gfx/1A.PNG">
             </div>
         </div>
     </div>
@@ -205,7 +206,6 @@ body{
 
 
 <script>    
-
 function formatAMPM(date) {
   var hours = date.getHours();
   var minutes = date.getMinutes();
@@ -243,27 +243,53 @@ setInterval(function() {
         $("#TIME").html(formatAMPM(datetimeNow)[0]);
     }, 1000);
 
-</script>
-
-<script>
-
 setTimeout(function(){
 var witth = $("#MOVE").outerWidth();
 
 $("#wrapper").css("padding-right", witth+"px");
     //do what you need here
-}, 2000);
+}, 1001);
     //do what you need here
-
-
 </script>
 
+
+<script>
+var zonetic=0
+var zonesrcs=['1.png','1a.png']
+$('#zone').click(function(){
+  $('#zoneimg').prop('src','gfx/'+zonesrcs[zonetic]);
+  zonetic++;
+  if(zonetic>zonesrcs.length-1){zonetic=0};
+}
+  )
+</script>
+
+<script>
+var coltic=0
+
+var colsrcs=[
+  'linear-gradient(to right,  #6634B0 0%,#6634B0 33.33%,#D28037 33.33%,#D28037 66.66%,#403EF3 66.66%,#403EF3 100%)',
+  'linear-gradient(to right,  #93F070 0%,#93F070 33.33%,#9E9E94 33.33%,#9E9E94 66.66%,#9C74F6 66.66%,#9C74F6 100%)',
+  'linear-gradient(to right,  #927F5D 0%,#927F5D 33.33%,#A59A90 33.33%,#A59A90 66.66%,#7FEA90 66.66%,#7FEA90 100%)',
+  'linear-gradient(to right,  #8E48C5 0%,#8E48C5 33.33%,#D2F354 33.33%,#D2F354 66.66%,#8B4893 66.66%,#8B4893 100%)',
+  ]
+
+$('#bigwrapper').click(function(){
+  $('#colors').css('background',colsrcs[coltic]);
+  coltic++;
+  if(coltic>colsrcs.length-1){coltic=0};
+}
+  )
+</script>
 
 <script>
 $('#refresh').click(function() {
     location.reload();
 });
 </script>
+
+
+
 
 </body>
 </html>
