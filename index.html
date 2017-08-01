@@ -107,7 +107,7 @@ body{
     height:100%;
     font-size:20;
     color:white;
-    line-height:80px;
+    line-height:94px;
     padding-left:40%;
 
 }
@@ -135,7 +135,7 @@ body{
 
 <div style="height:80px;width=100%;background-color:#9B1D81">
     <div id="back" style="float:left">
-        <img style="width:35px;padding-top:60%" src="gfx/back.png">
+        <img style="width:35px;padding-top:70%" src="gfx/back.png">
     </div>
     <div id="top">
         One Way
@@ -240,7 +240,7 @@ var datetimeNow = new Date();
 $("#active").html("Ticket activated at " + formatAMPM(datetimeNow)[1]);
 
 setInterval(function() {
-        //var datetimeNow = new Date();
+        var datetimeNow = new Date();
         $("#TIME").html(formatAMPM(datetimeNow)[0]);
     }, 1000);
 
