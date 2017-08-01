@@ -49,12 +49,13 @@ body{
 
 @-webkit-keyframes backandforth {0%{left:10%;} 50%{left:90%;} 100%{left:10%;}}
 
-
+  /*30x60px*/
 
 .bottom {
   position:absolute;
-  height: 30px;
-  width: 60px;
+
+  height: 4.076086957%; 
+  width: 14.5631086%;
   background: #86186F;
   display: inline-block;
   margin: 0 1em 1em 0;
@@ -69,10 +70,10 @@ body{
 
 
 #TIME{
-    font-size: 24pt;
-    padding-top:24%;
+    font-size: 22.5pt;
+    padding-top:26.5%;
     font-family: 'Roboto', sans-serif;
-    line-height:22pt;
+    line-height:100%;
     color:white;
     text-shadow: -2px 0 3px black, 0 2px 3px black, 2px 0 3px black, 0 -2px 3px black;
     opacity: 1;
@@ -108,7 +109,7 @@ body{
     font-size:20;
     color:white;
     line-height:94px;
-    padding-left:40%;
+    //padding-left:40%;
 
 }
 
@@ -135,9 +136,9 @@ body{
 
 <div style="height:80px;width=100%;background-color:#9B1D81">
     <div id="back" style="float:left">
-        <img style="width:35px;padding-top:70%" src="gfx/back.png">
+        <img style="position:absolute;width:35px;padding-top:30px" src="gfx/back.png">
     </div>
-    <div id="top">
+    <div class="text-center"id="top">
         One Way
     </div>
 </div>
@@ -238,19 +239,15 @@ function formatAMPM(date) {
 }
 var datetimeNow = new Date();
 $("#active").html("Ticket activated at " + formatAMPM(datetimeNow)[1]);
+$("#TIME").html(formatAMPM(datetimeNow)[0]);
+
+var witth = $("#MOVE").outerWidth();
+$("#wrapper").css("padding-right", witth+"px");
 
 setInterval(function() {
         var datetimeNow = new Date();
         $("#TIME").html(formatAMPM(datetimeNow)[0]);
     }, 1000);
-
-setTimeout(function(){
-var witth = $("#MOVE").outerWidth();
-
-$("#wrapper").css("padding-right", witth+"px");
-    //do what you need here
-}, 2000);
-    //do what you need here
 </script>
 
 
