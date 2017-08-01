@@ -245,13 +245,13 @@ $("#TIME").html(formatAMPM(datetimeNow)[0]);
 setTimeout(function(){
   var witth = $("#MOVE").outerWidth();
   $("#wrapper").css("padding-right", witth+"px");
-}, 2000);
+}, 400);
 
 
 setInterval(function() {
         var datetimeNow = new Date();
         $("#TIME").html(formatAMPM(datetimeNow)[0]);
-    }, 400);
+    }, 1000);
 </script>
 
 
