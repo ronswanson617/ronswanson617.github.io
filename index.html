@@ -168,9 +168,9 @@ body{
 <!--<a style='display:block;width:100%'>-->
 <div id="bigwrapper">
 <div id="colors" class="container btn nopadding">
-  <div class="col-xs-4 colorr nopadding" style="border-top-left-radius: 5px;border-bottom-left-radius: 5px;"></div>
-  <div class="col-xs-4 colorr nopadding clickable" style="background-color:red"></div>
-  <div class="col-xs-4 colorr nopadding" style="border-top-right-radius: 5px;border-bottom-right-radius: 5px;"></div>
+  <div class="col-xs-4 colorr nopadding" style="border-top-left-radius: 5px;border-bottom-left-radius: 5px;background-color:#6634B0"></div>
+  <div class="col-xs-4 colorr nopadding clickable" style="background-color:#D28037"></div>
+  <div class="col-xs-4 colorr nopadding" style="border-top-right-radius: 5px;border-bottom-right-radius: 5px;background-color:#403EF3"></div>
 </div>
 
 <div id="wrapper">
@@ -206,7 +206,7 @@ body{
     <div class="row">
         <div class="col-xs-12 text-center">
             <div id="zone" class="btn" style=";width:100%%;background-color:#FFFFFF;color:black;line-height:25px;box-shadow: 0px 2px 0px #D3D3D3;">
-                <img id="zoneimg" width=100% src="gfx/1.png">
+                <img style="pointer-events: none;" id="zoneimg" width=100% src="gfx/1.png">
             </div>
         </div>
     </div>
@@ -289,7 +289,7 @@ setTimeout(function(){
 
 <script>
 var zonetic=0
-var zonesrcs=['1.png','1A.png']
+var zonesrcs=['1A.png','1.png']
 $('#zone').click(function(){
   $('#zoneimg').prop('src','gfx/'+zonesrcs[zonetic]);
   zonetic++;
