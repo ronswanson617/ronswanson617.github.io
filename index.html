@@ -61,7 +61,7 @@ body{
   /*30x60px  4.076086957x14.5631086%*/
 .bottom {
   position:absolute;
-
+  cursor: pointer;
   height: 30px; 
   width: 60px;
   background: #86186F;
@@ -81,7 +81,7 @@ body{
 
 #TIME{
     font-size: 22.5pt;
-    padding-top:30%;
+    padding-top:26%;
     font-family: 'Roboto', sans-serif;
     line-height:100%;
     color:white;
@@ -97,7 +97,7 @@ body{
     width:90%;
     left: 5%;
     top:90px;
-    //background-color:#FFFFFF;
+    /
     
     //border-bottom:solid #D3D3D3;
     -webkit-animation: opa 1.5s linear 0s;
@@ -120,7 +120,7 @@ body{
     height:100%;
     font-size:20;
     color:white;
-    line-height:100px;
+    line-height:90px;
     //padding-left:40%;
 
 }
@@ -141,9 +141,10 @@ body{
 }
 
 .colorr{
-  background-color: black;
+  
   height: 100%;
   cursor: pointer;
+  opacity:0;
 }
 
 .nopadding {
@@ -157,9 +158,9 @@ body{
 
 <body>
 
-<div style="height:80px;width=100%;background-color:#9B1D81">
+<div style="height:75px;width=100%;background-color:#9B1D81">
     <div id="back" style="float:left">
-        <img style="position:absolute;width:35px;padding-top:30px" src="gfx/back.png">
+        <img style="position:absolute;width:35px;padding-top:25px" src="gfx/back.png">
     </div>
     <div class="text-center"id="top">
         One Way
@@ -168,9 +169,9 @@ body{
 <!--<a style='display:block;width:100%'>-->
 <div id="bigwrapper">
 <div id="colors" class="container btn nopadding">
-  <div class="col-xs-4 colorr nopadding" style="border-top-left-radius: 5px;border-bottom-left-radius: 5px;background-color:#6634B0"></div>
-  <div class="col-xs-4 colorr nopadding clickable" style="background-color:#D28037"></div>
-  <div class="col-xs-4 colorr nopadding" style="border-top-right-radius: 5px;border-bottom-right-radius: 5px;background-color:#403EF3"></div>
+  <div id='left' class="col-xs-4 colorr nopadding" style="border-top-left-radius: 5px;border-bottom-left-radius: 5px;background-color:#6634B0"></div>
+  <div id='middle' class="col-xs-4 colorr nopadding" style="background-color:#D28037"></div>
+  <div if='right' class="col-xs-4 colorr nopadding" style="border-top-right-radius: 5px;border-bottom-right-radius: 5px;background-color:#403EF3"></div>
 </div>
 
 <div id="wrapper">
@@ -182,7 +183,7 @@ body{
 </div>
 <!--</a>-->
 
-<div class="bottom"><img class="img-responsive" src="gfx/down.png" width = 22px style="  position:absolute;left:18px;top:5px"></div>
+<div id="down-btn" class="bottom"><img class="img-responsive" src="gfx/down.png" width = 22px style="position:absolute;left:18px;top:5px"></div>
 <br>.
 <br>
 
@@ -237,6 +238,56 @@ body{
   <script src="css/bootstrap.min.js"></script>
 
 
+<!--cookie functions-->
+<script>
+
+function clearCook(){
+    $('.colorr').each(function(){
+    var id = $(this).attr('id');
+    setCookie(id,'');
+})};
+
+function setCookie(cname, cvalue, hrs) {
+    var d = new Date();
+    d.setTime(d.getTime() + (hrs*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}    
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+};  
+
+</script>
+
+<!--check to see if colors have been saved-->
+<script>
+$(document).ready(function(){
+  $('.colorr').each(function(){
+    var id = $(this).attr('id');
+    if (getCookie(id)!=''){
+        var oldcol=getCookie(id);
+        $(this).css('background-color',oldcol);
+    };
+  });
+})
+
+</script>
+
+
+
+<!--format time for scrolling letters-->
 <script>    
 function formatAMPM(date) {
   var hours = date.getHours();
@@ -272,13 +323,13 @@ $("#active").html("Ticket activated at " + formatAMPM(datetimeNow)[1]);
 $("#TIME").html(formatAMPM(datetimeNow)[0]);
 
 
-
+//refresh time every second
 setInterval(function() {
         var datetimeNow = new Date();
         $("#TIME").html(formatAMPM(datetimeNow)[0]);
     }, 1000);
 
-
+//wait 500ms for time to appear to set the scrolling buffer
 setTimeout(function(){
   var witth = $("#MOVE").outerWidth();
   $("#wrapper").css("padding-right", witth+"px");
@@ -287,16 +338,94 @@ setTimeout(function(){
 </script>
 
 
+
+
+
+
+<!--change zone img on click-->
 <script>
-var zonetic=0
-var zonesrcs=['1A.png','1.png']
+var zonetic=0;
+var zonesrcs=['1A.png','1.png'];
 $('#zone').click(function(){
   $('#zoneimg').prop('src','gfx/'+zonesrcs[zonetic]);
+
   zonetic++;
   if(zonetic>zonesrcs.length-1){zonetic=0};
 }
   )
 </script>
+
+
+<!--change security color on click-->
+<script>
+var coltic=0
+
+var colsrcs=[
+  '#6634B0',
+  '#D28037',
+  '#403EF3',
+  '#93F070',
+  '#9E9E94',
+  '#9C74F6',
+  '#927F5D',
+  '#A59A90',
+  '#7FEA90',
+  '#8E48C5',
+  '#DECB81',
+  '#8B4893',
+  '#904DC6',
+  '#DECB81',
+  '#DF6C4E',
+  '#63BF49',
+  '#B482B3',
+  '#FFBD38',
+  ];
+
+$('.colorr').click(function(){
+  var id = $(this).attr('id');
+  var newcolor = colsrcs[coltic];
+  $(this).css('background-color',newcolor);
+  setCookie(id,newcolor,1);
+  coltic++;
+  if(coltic>colsrcs.length-1){coltic=0};
+}
+  )
+</script>
+
+
+<!--refresh page buttom-->
+<script>
+$('#refresh').click(function() {
+    location.reload();
+});
+</script>
+
+
+<!--set activated time button-->
+<script>
+$('#active').click(function() {
+  var st = prompt("Ticket activated at ", "");
+  if (st != null) {
+    $('#active').html("Ticket activated at "+st);
+    }
+})
+</script>
+
+clear cookies button
+<script>
+
+$('#down-btn').click(function(){
+  clearCook();
+});
+$('.colorr').css('opacity',1)
+</script>
+
+
+
+
+
+
+
 <!--
 <script>
 var coltic=0
@@ -318,60 +447,6 @@ $('#bigwrapper').click(function(){
   )
 </script>
 -->
-
-
-<script>
-var coltic=0
-
-var colsrcs=[
-  '#6634B0',
-  '#D28037',
-  '#403EF3',
-  '#93F070',
-  '#9E9E94',
-  '#9C74F6',
-  '#927F5D',
-  '#A59A90',
-  '#7FEA90',
-  '#8E48C5',
-  '#DECB81',
-  '#8B4893',
-
-  '#904DC6',
-  '#DECB81',
-  '#DF6C4E',
-  '#63BF49',
-  '#B482B3',
-  '#FFBD38',
-  ]
-
-$('.colorr').click(function(){
-  //alert('click');
-$(this).css('background-color',colsrcs[coltic]);
-  coltic++;
-  if(coltic>colsrcs.length-1){coltic=0};
-}
-  )
-</script>
-
-
-
-<script>
-$('#refresh').click(function() {
-    location.reload();
-});
-</script>
-
-<script>
-$('#active').click(function() {
-  var st = prompt("Ticket activated at ", "");
-  if (st != null) {
-    $('#active').html("Ticket activated at "+st);
-    }
-})
-</script>
-
-
 
 </body>
 </html>
