@@ -276,7 +276,7 @@ function getCookie(cname) {
 $(document).ready(function(){
   $('.colorr').each(function(){
     var id = $(this).attr('id');
-    if (getCookie(id)!=-1){
+    if (getCookie(id)!=""){
         var oldcol=getCookie(id);
         $(this).css('background-color',oldcol);
     };
