@@ -244,7 +244,7 @@ body{
 function clearCook(){
     $('.colorr').each(function(){
     var id = $(this).attr('id');
-    setCookie(id,'');
+    setCookie(id,"",-1);
 })};
 
 function setCookie(cname, cvalue, hrs) {
@@ -276,7 +276,7 @@ function getCookie(cname) {
 $(document).ready(function(){
   $('.colorr').each(function(){
     var id = $(this).attr('id');
-    if (getCookie(id)!=''){
+    if (getCookie(id)!=-1){
         var oldcol=getCookie(id);
         $(this).css('background-color',oldcol);
     };
