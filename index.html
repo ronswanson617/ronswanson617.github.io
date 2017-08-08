@@ -274,7 +274,7 @@ function getCookie(cname) {
 
 </script>
 
-<!--check to see if colors have been saved-->
+<!--check to see if colors/zone/activation have been saved-->
 <script>
 $(document).ready(function(){
   if(getCookie('active')!=""){
@@ -360,7 +360,7 @@ var zonetic=0;
 var zonesrcs=['1A.png','1.png'];
 $('#zone').click(function(){
   $('#zoneimg').prop('src','gfx/'+zonesrcs[zonetic]);
-  setCookie('zoneimg',$('#zoneimg').prop('src'));
+  setCookie('zoneimg',$('#zoneimg').prop('src'),1);
   zonetic++;
   if(zonetic>zonesrcs.length-1){zonetic=0};
 }
