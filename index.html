@@ -85,7 +85,7 @@ body{
     font-family: 'Roboto', sans-serif;
     line-height:100%;
     color:white;
-    text-shadow: -2px 0 3px black, 0 2px 3px black, 2px 0 3px black, 0 -2px 3px black;
+    text-shadow: -1.6px 0 3px black, 0 1.6px 3px black, 1.6px 0 3px black, 0 -1.6px 3px black;
     opacity: 0;
     pointer-events: none;
 }
@@ -245,7 +245,10 @@ function clearCook(){
     $('.colorr').each(function(){
     var id = $(this).attr('id');
     setCookie(id,"",-1);
-})};
+})
+    setCookie('zoneimg',"",-1);
+    setCookie('active',"",-1);
+  };
 
 function setCookie(cname, cvalue, hrs) {
     var d = new Date();
@@ -274,6 +277,14 @@ function getCookie(cname) {
 <!--check to see if colors have been saved-->
 <script>
 $(document).ready(function(){
+  if(getCookie('active')!=""){
+    $('#active').html("Ticket activated at "+getCookie('active'));
+  }
+
+  if(getCookie('zoneimg')!=""){
+    $('#zoneimg').prop('src',getCookie('zoneimg'));
+  }
+  
   $('.colorr').each(function(){
     var id = $(this).attr('id');
     if (getCookie(id)!=""){
@@ -349,7 +360,7 @@ var zonetic=0;
 var zonesrcs=['1A.png','1.png'];
 $('#zone').click(function(){
   $('#zoneimg').prop('src','gfx/'+zonesrcs[zonetic]);
-
+  setCookie('zoneimg',$('#zoneimg').prop('src'));
   zonetic++;
   if(zonetic>zonesrcs.length-1){zonetic=0};
 }
@@ -408,6 +419,7 @@ $('#active').click(function() {
   var st = prompt("Ticket activated at ", "");
   if (st != null) {
     $('#active').html("Ticket activated at "+st);
+    setCookie('active',st,1);
     }
 })
 </script>
