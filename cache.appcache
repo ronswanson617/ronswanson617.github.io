@@ -1,12 +1,12 @@
 CACHE MANIFEST
-# v1.4
+# v1.5
 index.html
 gfx/1A.png
 gfx/1.png
 gfx/back.png
 gfx/down.png
 gfx/startup.png
-
+gfx/ico.png
 
 css/roboto.woff
 css/jquery.min.js
