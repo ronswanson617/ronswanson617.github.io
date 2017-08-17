@@ -128,11 +128,17 @@ body{
   cursor: pointer;
 }
 
- .col-pck:active{
-  opacity: 0.5;
-  cursor: pointer;
 
- }
+
+.acti {
+
+    filter: brightness(60%);
+    border-color: black;
+}
+
+ 
+
+
 
 .modal{
   position:absolute;

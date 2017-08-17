@@ -347,18 +347,24 @@ $('.l-col').click(function(){
   console.log(`${bgc}`);
   $('#left').css('background-color',bgc);
   setCookie($('#left').attr('id'),`${bgc}`,1);
+  $('.l-col').removeClass('acti')
+  $(this).addClass('acti')
 })
 
 $('.m-col').click(function(){
   var bgc = $(this).getHexBackgroundColor();
   $('#middle').css('background-color',bgc);
   setCookie($('#middle').attr('id'),bgc,1);
+  $('.m-col').removeClass('acti')
+  $(this).addClass('acti')
 })
 
 $('.r-col').click(function(){
   var bgc = $(this).getHexBackgroundColor();
   $('#right').css('background-color',bgc);
   setCookie($('#right').attr('id'),bgc,1);
+  $('.r-col').removeClass('acti')
+  $(this).addClass('acti')
 })
 
 
