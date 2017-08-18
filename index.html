@@ -21,6 +21,7 @@
     <link rel="apple-touch-startup-image" href="gfx/startup.png">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />-->
     <!--<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
     <!-- Custom CSS -->
 
@@ -138,15 +139,42 @@
         </div>
     </div> <!-- /.modal-dialog -->
 </div> <!-- /.modal -->
-  <!-- jQuery -->
-  <script src="css/jquery.min.js"></script>
+  <!-- jQuery 
+  <script src="css/jquery.min.js"></script>-->
 
   <!-- Bootstrap Core JavaScript -->
-  <script src="css/bootstrap.min.js"></script>
+  
 
 
 
-  <script src="js/jquery.touchy.min.js"></script>
+<script
+        src="https://code.jquery.com/jquery-2.1.0.min.js"
+        integrity="sha256-8oQ1OnzE2X9v4gpRVRMb1DWHoPHJilbur1LP9ykQ9H0="
+        crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+
+<script src="css/bootstrap.min.js"></script>
+
+  <script>
+// var closem = function (e, $target, data) {
+ //  $('#myModal').modal('hide');
+//};
+
+  //$('body').bind('touchy-pinch',closem);
+  $('body').on("swiperight",function(){
+    $("#myModal").modal('hide');
+    //alert('this');
+  });
+
+  </script>
+
+
+<script>
+  $("p").on("swipe",function(){
+    $(this).hide();
+  });                       
+</script>
 
 
 <!--cookies!-->
@@ -159,29 +187,7 @@
 <!--format color selection-->
   <script src="js/colors.js"></script>
 
-<script src="https://hammerjs.github.io/dist/hammer.js"></script>
 
-  <script>
-// var closem = function (e, $target, data) {
- //  $('#myModal').modal('hide');
-//};
-
-  //$('body').bind('touchy-pinch',closem);
-
-
-  var mod = document.getElementById('myModal');
-
-  var mc = new Hammer.Manager(mod);
-
-  var pinch = new Hammer.Pinch();
-
-  mc.add([pinch])
-
-
-  mc.on("pinch", function(ev) {
-    $('#myModal').modal('hide');
-});
-  </script>
 
 
 
