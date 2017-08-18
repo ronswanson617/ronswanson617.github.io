@@ -15,12 +15,14 @@ js/cookies.js
 
 css/roboto.woff
 css/jquery.min.js
+js/jquery2.min.js
+js/jquerymobile.min.js
 css/bootstrap.min.css
 css/bootstrap.min.js
 css/index.css
 
-https://code.jquery.com/jquery-2.1.0.min.js
-http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js
+#https://code.jquery.com/jquery-2.1.0.min.js
+#http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js
 
 
 #https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js
