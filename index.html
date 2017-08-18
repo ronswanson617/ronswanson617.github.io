@@ -146,252 +146,98 @@
 
 
 
+  <script src="js/jquery.touchy.min.js"></script>
 
 
+<!--cookies!-->
+  <script src="js/cookies.js"></script>
 
 
+  <!--format time for scrolling letters-->
+  <script src="js/settime.js"></script>
+
+<!--format color selection-->
+  <script src="js/colors.js"></script>
 
 
-
-<!--cookie functions-->
-<script>
-
-function clearCook(){
-    $('.colorr').each(function(){
-    var id = $(this).attr('id');
-    setCookie(id,"",-1);
-})
-    setCookie('zoneimg',"",-1);
-    setCookie('active',"",-1);
-  };
-
-function setCookie(cname, cvalue, hrs) {
-    var d = new Date();
-    d.setTime(d.getTime() + (hrs*60*60*1000));
-    var expires = "expires="+ d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}    
-
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-};  
-
-</script>
-
-
-
-<!--check to see if colors/zone/activation have been saved-->
-<script>
-$(document).ready(function(){
-  if(getCookie('active')!=""){
-    $('#active').html("Ticket activated at "+getCookie('active'));
-  }
-
-  if(getCookie('zoneimg')!=""){
-    $('#zoneimg').prop('src',getCookie('zoneimg'));
-  }
-  
-  $('.colorr').each(function(){
-    var id = $(this).attr('id');
-    if (getCookie(id)!=""){
-        var oldcol=getCookie(id);
-        $(this).css('background-color',oldcol);
-    };
-  });
-  $('.colorr').css('opacity',1)
-})
-
-</script>
-
-
-
-<!--format time for scrolling letters-->
-<script>    
-function formatAMPM(date) {
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
-  var secs = date.getSeconds();
-  var day= date.getDate();
-  var mon = date.getMonth()+1;
-  var yr = date.getYear()
-  var MS_PER_MINUTE = 60000;
-  yr=yr-100
-  var ampm = hours >= 12 ? 'PM' : 'AM';
-
-  var start = new Date(date - 14 * MS_PER_MINUTE);
-  var shours=start.getHours();
-  var smin = start.getMinutes();
-  
-  shours = shours % 12;
-  shours = shours ? shours : 12; // the hour '0' should be '12'
-  smin = smin < 10 ? '0'+smin : smin;
-
-  hours = hours % 12;
-  hours = hours ? hours : 12; // the hour '0' should be '12'
-  minutes = minutes < 10 ? '0'+minutes : minutes;
-  secs = secs < 10 ? '0'+secs : secs;
-  day = day < 10 ? '0'+day : day;
-  mon = mon < 10 ? '0'+mon : mon;
-  var strTime = hours + ':' + minutes + ':' +  secs + ' ' + ampm + '<br>' + mon + '/' + day + '/' +yr;
-  var startt = shours + ':' + smin + ' ' + ampm ;
-  return [strTime,startt];
-}
-var datetimeNow = new Date();
-$("#active").html("Ticket activated at " + formatAMPM(datetimeNow)[1]);
-$("#TIME").html(formatAMPM(datetimeNow)[0]);
-
-
-//refresh time every second
-setInterval(function() {
-        var datetimeNow = new Date();
-        $("#TIME").html(formatAMPM(datetimeNow)[0]);
-    }, 1000);
-
-//wait 500ms for time to appear to set the scrolling buffer
-setTimeout(function(){
-  var witth = $("#MOVE").outerWidth();
-  $("#wrapper").css("padding-right", witth+"px");
-  $("#TIME").css("opacity",1);
-}, 300);
-</script>
-
-
-
-
-
-
-<!--change zone img on click-->
-<script>
-var zonetic=0;
-var zonesrcs=['1A.png','1.png'];
-$('#zone').click(function(){
-  $('#zoneimg').prop('src','gfx/'+zonesrcs[zonetic]);
-  setCookie('zoneimg',$('#zoneimg').prop('src'),1);
-  zonetic++;
-  if(zonetic>zonesrcs.length-1){zonetic=0};
-}
-  )
-</script>
-
-<script>
-(function($) {
-  $.fn.getHexBackgroundColor = function() {
-    return (function(rgb) {
-      return '#' + (!rgb
-        ? 'FFFFFF'
-        : rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/)
-             .slice(1)
-             .map(x => ('0' + parseInt(x).toString(16)).slice(-2))
-             .join('')
-             .toUpperCase());
-    })($(this).css('background-color'));
-  }
-})(jQuery);
-
-
-
-var colsrcs=[
-  '#6634B0',
-  '#B482B3',
-  '#8B4893',
-  '#904DC6',
-  '#9C74F6',
-
-  '#403EF3',
-  '#4E83A6',
-  '#69D5BD',
-
-
-
-  '#9E9E94',
-
-  '#927F5D',
-  '#A59A90',
-
-  '#DECB81',
-
-  '#DF6C4E',
-  '#FFBD38',
-  '#D28037',
-  '#63BF49',
-  '#7FEA90',
-  '#93F070',
-
-  ];
-
- //var template ='<div class="row"><div class="col-xs-4 l-col col-pck" style="background-color:red"></div><div class="col-xs-4 m-col col-pck" style="background-color:red"></div><div class="col-xs-4 r-col col-pck" style="background-color:red"></div></div>';
-
-mod = $('.modal-colors');
-
-for (i=0; i<colsrcs.length;i++){
-  color=colsrcs[i];
-  var newdiv =`<div class="row"><div class="col-xs-4 l-col col-pck" style="background-color:${color}"></div><div class="col-xs-4 m-col col-pck" style="background-color:${color}"></div><div class="col-xs-4 r-col col-pck" style="background-color:${color}"></div></div>`;
-    mod.append(newdiv)
-  //console.log(newdiv)
+  <script>
+ function closem() {
+   $('#myModal').modal('toggle');
 };
 
-
-$('.l-col').click(function(){
-  var bgc = $(this).getHexBackgroundColor();
-  console.log(`${bgc}`);
-  $('#left').css('background-color',bgc);
-  setCookie($('#left').attr('id'),`${bgc}`,1);
-  $('.l-col').removeClass('acti')
-  $(this).addClass('acti')
-})
-
-$('.m-col').click(function(){
-  var bgc = $(this).getHexBackgroundColor();
-  $('#middle').css('background-color',bgc);
-  setCookie($('#middle').attr('id'),bgc,1);
-  $('.m-col').removeClass('acti')
-  $(this).addClass('acti')
-})
-
-$('.r-col').click(function(){
-  var bgc = $(this).getHexBackgroundColor();
-  $('#right').css('background-color',bgc);
-  setCookie($('#right').attr('id'),bgc,1);
-  $('.r-col').removeClass('acti')
-  $(this).addClass('acti')
-})
+  $('#myModal').bind('touchy-pinch',closem())
+  </script>
 
 
-var modal = document.getElementById('myModal');
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
-var span = document.getElementsByClassName("close")[0];
-var off = 0
-//var $imgs = 
-//$('.colorr').click(function() {
-  //var a = alert('click')
-  //modal.style.display = "block";
-  //modalImg.src = this.src;
-  //captionText.innerHTML = this.alt;
-  //off = ((window.innerWidth - modalImg.width)/2)-50;
-  //if (off<0){off=10;}
-  //console.log(off);
-  //span.style.right = off + "px";
-//})
 
-span.onclick = function() { 
-   //modal.fadeOut()
-   modal.style.display = "none";
-   span.style.right ="0px";
+<!--buttons!-->
+  <script>
+  var zonetic=0;
+  var zonesrcs=['1A.png','1.png'];
+  $('#zone').click(function(){
+    $('#zoneimg').prop('src','gfx/'+zonesrcs[zonetic]);
+    setCookie('zoneimg',$('#zoneimg').prop('src'),1);
+    zonetic++;
+    if(zonetic>zonesrcs.length-1){zonetic=0};
+  }
+    )
 
-}
-</script>
+  //refresh page buttom-
+
+  $('#refresh').click(function() {
+      location.reload();
+  });
+  
+  //set activated time button
+
+  $('#active').click(function() {
+    var st = prompt("Ticket activated at ", "");
+    if (st != null) {
+      $('#active').html("Ticket activated at "+st);
+      setCookie('active',st,1);
+      }
+  })
+
+  //clear cookies button
+
+  $('#down-btn').click(function(){
+    clearCook();
+  });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!--change security color on click
 <script>
@@ -430,32 +276,6 @@ $('.colorr').click(function(){
 </script>-->
 
 
-<!--refresh page buttom-->
-<script>
-$('#refresh').click(function() {
-    location.reload();
-});
-</script>
-
-
-<!--set activated time button-->
-<script>
-$('#active').click(function() {
-  var st = prompt("Ticket activated at ", "");
-  if (st != null) {
-    $('#active').html("Ticket activated at "+st);
-    setCookie('active',st,1);
-    }
-})
-</script>
-
-<!--clear cookies button-->
-<script>
-
-$('#down-btn').click(function(){
-  clearCook();
-});
-</script>
 
 
 
