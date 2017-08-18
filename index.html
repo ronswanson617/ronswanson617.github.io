@@ -161,11 +161,11 @@
 
 
   <script>
- function closem() {
+ var closem = function (e, $target, data) {
    $('#myModal').modal('hide');
 };
 
-  $('#myModal').bind('touchy-pinch',closem())
+  $('#myModal').bind('touchy-pinch',closem);
   </script>
 
 
