@@ -38,6 +38,8 @@ function getCookie(cname) {
 $(document).ready(function(){
   if(getCookie('active')!=""){
     $('#active').html("Ticket activated at "+getCookie('active'));
+  } else {
+        $("#active").html("Ticket activated at " + formatAMPM(datetimeNow)[1]);
   }
 
   if(getCookie('zoneimg')!=""){

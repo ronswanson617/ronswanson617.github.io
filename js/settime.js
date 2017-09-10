@@ -28,7 +28,8 @@ function formatAMPM(date) {
   return [strTime,startt];
 }
 var datetimeNow = new Date();
-$("#active").html("Ticket activated at " + formatAMPM(datetimeNow)[1]);
+
+
 $("#TIME").html(formatAMPM(datetimeNow)[0]);
 
 
