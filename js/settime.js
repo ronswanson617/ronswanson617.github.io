@@ -9,7 +9,7 @@ function formatAMPM(date) {
   yr=yr-100
   var ampm = hours >= 12 ? 'PM' : 'AM';
 
-  var start = new Date(date - 14 * MS_PER_MINUTE);
+  var start = new Date(date);
   var shours=start.getHours();
   var smin = start.getMinutes();
   
