@@ -29,17 +29,20 @@ body{
 .bottom {
   position:absolute;
   cursor: pointer;
-  height: 26px; 
-  width: 52px;
+  //height: 26px; 
+  //width: 52px;
+  height:42px;
+  width:85px;
   background: #86186F;
   display: inline-block;
-  margin: 0 1em 1em 0;
+  //margin: 0 1em 1em 0;
   border-bottom-left-radius: 60px;
   border-bottom-right-radius: 60px;
   //left:43%;
   left: 50%;
   transform: translate(-50%, 0%);
   box-shadow: 0px 2px 0px #D3D3D3;
+  //margin-bottom: 100px;
 }
 .vcenter {
     line-height: 50px;
@@ -82,6 +85,7 @@ body{
     position: absolute;
     top:66px;
     pointer-events: none;
+    white-space: nowrap;
 }
 #top{
     height:100%;
