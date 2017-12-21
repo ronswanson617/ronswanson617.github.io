@@ -1,6 +1,35 @@
 
 //cookie functions
 
+function clearCook2(){
+  var cookies = $.cookie();
+  for(var cookie in cookies) {
+     $.removeCookie(cookie);
+  }
+}
+
+function clearListCookies()
+{   
+    var cookies = document.cookie.split(";");
+    for (var i = 0; i < cookies.length; i++)
+    {   
+        var spcook =  cookies[i].split("=");
+        deleteCookie(spcook[0]);
+    }
+    function deleteCookie(cookiename)
+    {
+        var d = new Date();
+        d.setDate(d.getDate() - 1);
+        var expires = ";expires="+d;
+        var name=cookiename;
+        //alert(name);
+        var value="";
+        document.cookie = name + "=" + value + expires + "; path=/acc/html";                    
+    }
+    //window.location = ""; // TO REFRESH THE PAGE
+}
+
+
 function clearCook(){
     $('.colorr').each(function(){
     var id = $(this).attr('id');
@@ -8,6 +37,7 @@ function clearCook(){
 })
     setCookie('zoneimg',"",-1);
     setCookie('active',"",-1);
+
   };
 
 function setCookie(cname, cvalue, hrs) {
